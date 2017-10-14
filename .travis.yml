@@ -52,8 +52,10 @@ matrix:
         apt:
           sources:
             - llvm-toolchain-trusty-4.0
+            - ubuntu-toolchain-r-test
           packages:
             - clang-4.0
+            - g++-6
       env:
          - MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
 
@@ -63,14 +65,15 @@ matrix:
         apt:
           sources:
             - llvm-toolchain-trusty-5.0
+            - ubuntu-toolchain-r-test
           packages:
             - clang-5.0
+            - g++-6
       env:
          - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
 
 before_install:
 # TODO: Install cppcheck
-   - sudo apt-get install -y g++-5
    - sudo apt-get install -y cmake
    - sudo apt-get install -y libsfml-dev
    - eval "${MATRIX_EVAL}"
